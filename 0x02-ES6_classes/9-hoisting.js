@@ -1,6 +1,4 @@
-// 9-hoisting.js
-
-import HolbertonClass from './8-hbtn_class.js';
+import HolbertonClass from './8-hbtn_class'; // Fix import extension
 
 export class StudentHolberton {
     constructor(firstName, lastName, holbertonClass) {
