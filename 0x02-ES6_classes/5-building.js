@@ -1,12 +1,29 @@
-// 5-building.js
 class Building {
-  constructor(sqft) {
-    this.sqft = sqft;
+  constructor(height) {
+    this._height = height;
+  }
+
+  get height() {
+    return this._height;
   }
 
   evacuationWarningMessage() {
-    return `Evacuate the building!`;
+    return `Evacuate ${this.height} meters!`;
   }
 }
 
-export default Building;
+class SkyScraper extends Building {
+  constructor(height, floors) {
+    super(height);
+    this._floors = floors;
+  }
+
+  get floors() {
+    return this._floors;
+  }
+
+  evacuationWarningMessage() {
+    // If the method should use `this` and should not be static, no change is needed.
+    return `Evacuate ${this.height} meters!`;
+  }
+}

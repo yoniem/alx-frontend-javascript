@@ -1,15 +1,39 @@
-// 9-hoisting.js
-import Student from './8-hbtn_class';
+import HolbertonClass from './8-hbtn_class';
+
+class HolbertonClass {
+  constructor(year, location) {
+    this._year = year;
+    this._location = location;
+  }
+
+  get year() {
+    return this._year;
+  }
+
+  get location() {
+    return this._location;
+  }
+}
 
 const listOfStudents = [
-  new Student('Bob', 27, 'male'),
-  new Student('Claire', 32, 'female'),
-  new Student('Alice', 24, 'female')
+  {
+    firstName: 'Guillaume',
+    lastName: 'Salva',
+    age: 32,
+    location: 'San Francisco',
+  },
+  {
+    firstName: 'John',
+    lastName: 'Doe',
+    age: 25,
+    location: 'New York',
+  },
 ];
 
-export default function initializeStudents() {
-  listOfStudents.forEach(student => {
-    const studentDescription = fullStudentDescription(student);
-    console.log(studentDescription);
-  });
+function getFullStudentDescription(student) {
+  return `${student.firstName} ${student.lastName} is ${student.age} years old and lives in ${student.location}`;
+}
+
+for (const student of listOfStudents) {
+  console.log(getFullStudentDescription(student));
 }
