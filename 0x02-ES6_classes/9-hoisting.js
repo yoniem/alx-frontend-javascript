@@ -1,39 +1,16 @@
-import HolbertonClass from './8-hbtn_class';
+// 9-hoisting.js
 
-class HolbertonClass {
-  constructor(year, location) {
-    this._year = year;
-    this._location = location;
-  }
+// Variable declaration with var hoisting
+var listOfStudents = ['John', 'Jane', 'Jim'];
 
-  get year() {
-    return this._year;
-  }
-
-  get location() {
-    return this._location;
-  }
+// Function hoisting
+function initialization() {
+  var a = 'Hello';
+  var b = 'World';
+  return `${a} ${b}`;
 }
 
-const listOfStudents = [
-  {
-    firstName: 'Guillaume',
-    lastName: 'Salva',
-    age: 32,
-    location: 'San Francisco',
-  },
-  {
-    firstName: 'John',
-    lastName: 'Doe',
-    age: 25,
-    location: 'New York',
-  },
-];
-
-function getFullStudentDescription(student) {
-  return `${student.firstName} ${student.lastName} is ${student.age} years old and lives in ${student.location}`;
-}
-
-for (const student of listOfStudents) {
-  console.log(getFullStudentDescription(student));
+// Function to return full student description
+function fullStudentDescription(name, age) {
+  return `${name} is ${age} years old.`;
 }
