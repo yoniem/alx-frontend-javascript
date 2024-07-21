@@ -1,12 +1,23 @@
-import { signUpUser, uploadPhoto } from './utils';
+// Function to simulate a delay
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
-export default async function handleProfileSignup() {
+// Async function example
+async function exampleFunction() {
   try {
-    const user = await signUpUser();
-    const photo = await uploadPhoto();
-    return { user, photo };
+    // Awaiting multiple promises
+    const result1 = await delay(1000);
+    const result2 = await delay(2000);
+    // Combining results or handling further logic
+    return [result1, result2];
   } catch (error) {
-    console.log('Signup system offline');
-    return { user: null, photo: null };
+    // Proper error handling
+    console.error("An error occurred:", error);
   }
 }
+
+// Running the example function
+exampleFunction().then(result => {
+  console.log("Results:", result);
+});
