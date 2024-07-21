@@ -1,15 +1,12 @@
 // 5-building.js
+class Building {
+  constructor(sqft) {
+    this.sqft = sqft;
+  }
 
-export default class Building {
-    constructor(sqft) {
-        this._sqft = sqft;
-    }
-
-    get sqft() {
-        return this._sqft;
-    }
-
-    evacuationWarningMessage() {
-        throw new Error('Class extending Building must override evacuationWarningMessage');
-    }
+  evacuationWarningMessage() {
+    return `Evacuate the building!`;
+  }
 }
+
+export default Building;

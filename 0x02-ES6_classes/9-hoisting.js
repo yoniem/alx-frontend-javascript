@@ -1,23 +1,15 @@
-import HolbertonClass from './8-hbtn_class'; // Fix import extension
+// 9-hoisting.js
+import Student from './8-hbtn_class';
 
-export class StudentHolberton {
-    constructor(firstName, lastName, holbertonClass) {
-        this._firstName = firstName;
-        this._lastName = lastName;
-        this._holbertonClass = holbertonClass;
-    }
+const listOfStudents = [
+  new Student('Bob', 27, 'male'),
+  new Student('Claire', 32, 'female'),
+  new Student('Alice', 24, 'female')
+];
 
-    get fullName() {
-        return `${this._firstName} ${this._lastName}`;
-    }
-
-    get holbertonClass() {
-        return this._holbertonClass;
-    }
-
-    get fullStudentDescription() {
-        return `${this._firstName} ${this._lastName} - ${this._holbertonClass._size} - ${this._holbertonClass._location}`;
-    }
+export default function initializeStudents() {
+  listOfStudents.forEach(student => {
+    const studentDescription = fullStudentDescription(student);
+    console.log(studentDescription);
+  });
 }
-
-export const listOfStudents = [];
