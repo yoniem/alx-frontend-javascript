@@ -1,15 +1,29 @@
+// 6-final-user.test.js
+import handleProfileSignup from './6-final-user';
 import { uploadPhoto, createUser } from './utils';
 
-export default async function handleProfileSignup() {
-  try {
-    const photoPromise = uploadPhoto();
-    const userPromise = createUser();
+jest.mock('./utils', () => ({
+  uploadPhoto: jest.fn(),
+  createUser: jest.fn(),
+}));
 
-    const [photo, user] = await Promise.all([photoPromise, userPromise]);
+describe('handleProfileSignup', () => {
+  it('should return the correct array when promises resolve', async () => {
+    uploadPhoto.mockResolvedValue({ body: 'photo' });
+    createUser.mockResolvedValue({ body: 'user' });
 
-    console.log(photo.body, user.body);
-    return [photo.body, user.body];
-  } catch (error) {
-    console.log('Signup system offline');
-  }
-}
+    const result = await handleProfileSignup();
+
+    expect(result).toEqual(['photo', 'user']);
+  });
+
+  it('should log "Signup system offline" when a promise rejects', async () => {
+    uploadPhoto.mockRejectedValue(new Error('Photo upload failed'));
+
+    console.log = jest.fn();
+
+    await handleProfileSignup();
+
+    expect(console.log).toHaveBeenCalledWith('Signup system offline');
+  });
+});
