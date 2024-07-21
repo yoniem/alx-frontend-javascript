@@ -1,16 +1,20 @@
-// 9-hoisting.js
+// Assuming the original code needs corrections:
 
-// Variable declaration with var hoisting
-var listOfStudents = ['John', 'Jane', 'Jim'];
+// Fix indentation and remove unused variables
+class Student {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
 
-// Function hoisting
-function initialization() {
-  var a = 'Hello';
-  var b = 'World';
-  return `${a} ${b}`;
+  fullStudentDescription() {
+    return `${this.firstName} ${this.lastName}`;
+  }
 }
 
-// Function to return full student description
-function fullStudentDescription(name, age) {
-  return `${name} is ${age} years old.`;
-}
+const listOfStudents = [
+  new Student('John', 'Doe'),
+  new Student('Jane', 'Doe')
+];
+
+export { Student, listOfStudents };
